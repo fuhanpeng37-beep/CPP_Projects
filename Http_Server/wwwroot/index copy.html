@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>五子棋 - 在线对战</title>
+<style>
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #101b1a;
+    color: #f5f5ef;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 8%;
+}
+.logo { font-size: 23px; font-weight: bold; }
+.logo span { color: #b9df8a; }
+a { color: inherit; text-decoration: none; }
+.btn {
+    display: inline-block;
+    padding: 13px 30px;
+    border-radius: 9px;
+    font-weight: 600;
+    transition: .2s;
+}
+.primary { background: #b9df8a; color: #142019; }
+.primary:hover { background: #d0efa9; }
+.outline { border: 1px solid #71817b; }
+.outline:hover { background: #263633; }
+.nav-actions { display: flex; gap: 12px; }
+.hero {
+    max-width: 1100px;
+    margin: 80px auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+.intro { max-width: 520px; }
+.tag { color: #b9df8a; letter-spacing: 3px; }
+h1 { font-size: 56px; line-height: 1.25; }
+p { color: #aebcb6; line-height: 1.9; }
+.hero-actions { display: flex; gap: 15px; margin-top: 35px; }
+.board {
+    width: 350px;
+    height: 350px;
+    flex-shrink: 0;
+    border: 14px solid #c99b60;
+    border-radius: 12px;
+    background-color: #deb77d;
+    background-image:
+      linear-gradient(#8c683f 1px, transparent 1px),
+      linear-gradient(90deg, #8c683f 1px, transparent 1px);
+    background-size: calc(100% / 14) calc(100% / 14);
+    background-position: 0 0;
+    box-shadow: 0 25px 60px #0006;
+    position: relative;
+}
+.piece {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 1px 3px 5px #0005;
+}
+.black { background: radial-gradient(circle at 30% 25%, #555, #080808); }
+.white { background: radial-gradient(circle at 30% 25%, #fff, #c9c9c9); }
+footer {
+    text-align: center;
+    padding: 35px;
+    color: #7e9188;
+}
+@media(max-width: 800px) {
+    .hero { flex-direction: column; margin: 40px auto; }
+    h1 { font-size: 40px; }
+    .board { width: 290px; height: 290px; }
+    nav { padding: 20px; }
+    .btn { padding: 11px 18px; }
+}
+</style>
+</head>
+<body>
+<nav>
+    <div class="logo">● <span>五子棋</span> ONLINE</div>
+    <div class="nav-actions">
+        <a class="btn outline" href="/login.html">登录</a>
+        <a class="btn primary" href="/register.html">注册</a>
+    </div>
+</nav>
+
+<main class="hero">
+    <div class="intro">
+        <div class="tag">GOMOKU ONLINE</div>
+        <h1>方寸棋盘<br>一决高下。</h1>
+        <p>
+            欢迎来到在线五子棋对战平台。<br>
+            与好友切磋棋艺，享受策略与智慧的较量。
+        </p>
+        <div class="hero-actions">
+            <a href="/login.html" class="btn primary">开始对战</a>
+            <a href="/register.html" class="btn outline">创建账号</a>
+        </div>
+    </div>
+
+    <div class="board" id="board"></div>
+</main>
+
+<footer>© 2026 五子棋在线对战平台</footer>
+
+<script>
+const pieces = [
+    [7,7,"black"], [7,8,"white"],
+    [8,7,"black"], [6,8,"white"],
+    [9,7,"black"], [8,8,"white"],
+    [6,7,"black"], [9,9,"white"],
+    [5,7,"black"]
+];
+
+const board = document.getElementById("board");
+pieces.forEach(([x,y,color]) => {
+    const piece = document.createElement("div");
+    piece.className = "piece " + color;
+    piece.style.left = (x / 14 * 100) + "%";
+    piece.style.top = (y / 14 * 100) + "%";
+    board.appendChild(piece);
+});
+</script>
+</body>
+</html>

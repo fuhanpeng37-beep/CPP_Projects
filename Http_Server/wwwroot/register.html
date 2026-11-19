@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>用户注册 - 五子棋</title>
+<style>
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #101b1a;
+    color: #f5f5ef;
+}
+.card {
+    width: 400px;
+    max-width: calc(100% - 32px);
+    padding: 40px;
+    background: #1b2a27;
+    border: 1px solid #35463f;
+    border-radius: 16px;
+}
+h1 { margin-bottom: 8px; }
+.subtitle { color: #a4b4aa; margin-bottom: 30px; }
+label { display: block; margin: 17px 0 8px; }
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #43564d;
+    border-radius: 8px;
+    background: #111e1a;
+    color: white;
+    font-size: 15px;
+}
+input:focus { outline: 1px solid #b9df8a; }
+button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #b9df8a;
+    color: #142019;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+button:hover { background: #d0efa9; }
+.links { text-align: center; margin-top: 25px; color: #a4b4aa; }
+a { color: #b9df8a; text-decoration: none; }
+.back { display: block; margin-top: 20px; text-align: center; }
+#error { color: #ff9e9e; margin-top: 15px; }
+</style>
+</head>
+<body>
+<div class="card">
+    <h1>创建账号</h1>
+    <p class="subtitle">加入五子棋，开启你的对战之旅</p>
+
+    <form id="registerForm" action = "/Register" method="post">
+        <label for="username">用户名</label>
+        <input id="username" type="text"
+               minlength="3" maxlength="20"
+               placeholder="3-20 个字符"
+               autocomplete="username" required>
+
+        <label for="password">密码</label>
+        <input id="password" type="password"
+               minlength="8"
+               placeholder="至少 8 位密码"
+               autocomplete="new-password" required>
+
+        <label for="confirm">确认密码</label>
+        <input id="confirm" type="password"
+               placeholder="请再次输入密码"
+               autocomplete="new-password" required>
+
+        <button type="submit">注册账号</button>
+        <p id="error" role="status"></p>
+    </form>
+
+    <div class="links">
+        已有账号？<a href="/login.html">立即登录</a>
+    </div>
+    <a class="back" href="/">返回首页</a>
+</div>
+
+<script>
+document.getElementById("registerForm")
+    .addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const password =
+            document.getElementById("password").value;
+        const confirm =
+            document.getElementById("confirm").value;
+        const error = document.getElementById("error");
+
+        if (password !== confirm) {
+            error.textContent = "两次输入的密码不一致！";
+            return;
+        }
+
+        // TODO: 接入 C++ HTTP 注册接口
+        error.textContent =
+            "注册接口尚未接入，请先实现服务端注册功能。";
+    });
+</script>
+</body>
+</html>
