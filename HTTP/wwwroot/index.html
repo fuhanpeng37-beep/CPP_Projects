@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>在线五子棋</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background-color: #f5f7fa;
+            font-family: Arial, "Microsoft YaHei", sans-serif;
+            text-align: center;
+        }
+
+        header {
+            background-color: #263238;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        main {
+            padding: 40px 20px;
+        }
+
+        .image-container {
+            margin: 30px auto;
+        }
+
+        .image-container img {
+            width: 350px;
+            max-width: 90%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px #0002;
+        }
+
+        .video-container {
+            margin: 35px auto;
+            max-width: 650px;
+        }
+
+        .video-container video {
+            width: 100%;
+            border-radius: 12px;
+            background: #000;
+            box-shadow: 0 5px 20px #0002;
+        }
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .buttons a {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 10px;
+            background-color: #409eff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .buttons a:hover {
+            background-color: #337ecc;
+        }
+
+        footer {
+            margin-top: 40px;
+            color: #888;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>在线五子棋对战平台</h1>
+    </header>
+
+    <main>
+        <h2>欢迎来到五子棋世界！</h2>
+        <p>登录账号，与其他玩家在线对战。</p>
+
+        <!-- 原来的图片 -->
+        <div class="image-container">
+            <img src="/image/chuyin.jpg"
+                 alt="首页图片">
+        </div>
+
+        <!-- 新增在线视频 -->
+        <div class="video-container">
+            <h2>在线视频播放测试</h2>
+
+            <video controls preload="metadata"
+                   playsinline>
+                <source
+                    src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+                    type="video/mp4">
+
+                您的浏览器不支持视频播放。
+            </video>
+
+            <p>点击播放按钮观看 MP4 测试视频</p>
+        </div>
+
+        <!-- 登录和注册按钮 -->
+        <div class="buttons">
+            <a href="/login.html">登录</a>
+            <a href="/register.html">注册</a>
+        </div>
+
+        <footer>
+            © 2026 在线五子棋
+        </footer>
+    </main>
+
+</body>
+</html>

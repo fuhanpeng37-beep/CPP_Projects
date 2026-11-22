@@ -1,6 +1,7 @@
-http:HttpServer.cc
-	g++ -o $@ $^ -std=c++14 
+ws:wsserver.cpp
+	g++ -o $@ $^ -std=c++11 -pthread -lboost_system
 
 .PHONY:clean
 clean:
-	rm -f  http
+	rm -r ws
+
