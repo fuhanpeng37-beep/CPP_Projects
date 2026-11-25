@@ -2,7 +2,7 @@
 all:main
 
 main:main.cc
-	g++ -o $@ $^ -std=c++11
+	g++ -o $@ $^ -std=c++11 -L/usr/lib64/mysql -lmysqlclient -ljsoncpp
 
 # ws:wsserver.cpp
 # 	g++ -o $@ $^ -std=c++11 -pthread -lboost_system
