@@ -13,7 +13,7 @@
 class Mysql_Util
 {
 public:
-    static MYSQL *Mysql_Create(const std::string &host,
+    static MYSQL *Mysql_create(const std::string &host,
                                const std::string &user,
                                const std::string &password,
                                const std::string &database_name,
@@ -46,7 +46,7 @@ public:
         return mysql;
     }
 
-    static bool Mysql_Exec(MYSQL *mysql, const std::string &sql)
+    static bool Mysql_exec(MYSQL *mysql, const std::string &sql)
     {
         // 5.执行sql语句
         // int mysql_query(MYSQL* mysql,const char* sql);
@@ -57,13 +57,12 @@ public:
         if (mysql_query(mysql, sql.c_str()) != 0)
         {
             ELOG("mysql query failed! , %s \n %s", mysql_error(mysql), sql.c_str());
-            mysql_close(mysql);
             return false;
         }
         return true;
     }
 
-    static void Mysql_Close(MYSQL *mysql)
+    static void Mysql_close(MYSQL *mysql)
     {
         // 10.关闭连接，释放句柄
         if (mysql != nullptr)

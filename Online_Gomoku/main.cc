@@ -1,5 +1,6 @@
 #include "Logger.hpp"
 #include "Util.hpp"
+#include "db.hpp"
 
 #define HOST "127.0.0.1"
 #define USER "root"
@@ -16,13 +17,13 @@ void log_test()
 
 void mysql_test()
 {
-    MYSQL *mysql = Mysql_Util::Mysql_Create(HOST, USER, PASSWORD, DBNAME, PORT);
+    MYSQL *mysql = Mysql_Util::Mysql_create(HOST, USER, PASSWORD, DBNAME, PORT);
 
     const std::string sql = "insert stu values(null,'小白',18,80);";
-    if (!Mysql_Util::Mysql_Exec(mysql, sql))
+    if (!Mysql_Util::Mysql_exec(mysql, sql))
         return ;
 
-    Mysql_Util::Mysql_Close(mysql);
+    Mysql_Util::Mysql_close(mysql);
 }
 
 void json_test()
@@ -59,8 +60,26 @@ void file_test()
     File_Util::Read(filename,body);
     DLOG("%s",body.c_str());
 }
+
+void db_test()
+{
+    Table_user us(HOST, USER, PASSWORD, DBNAME, PORT);
+    Json::Value user;
+    //user["username"] = "小马";
+    //user["password"] = "123223";
+    us.Lose(3);
+    // if(us.Select_by_name("小马",user))
+    // {
+    //     std::string body;
+    //     Json_Util::Serialize(user,body);
+    //     DLOG("%s",body.c_str());
+    // }
+        
+
+}
+
 int main()
 {
-    file_test();
+    db_test();
     return 0;
 }
