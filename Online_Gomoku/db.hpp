@@ -59,7 +59,7 @@ public:
         int row_num = mysql_num_rows(res);
         if (row_num == 0)
         {
-            DLOG("user info is not unique!");
+            DLOG("login user info not exist!");
             return false;
         }
         MYSQL_ROW row = mysql_fetch_row(res);
@@ -94,7 +94,7 @@ public:
         int row_num = mysql_num_rows(res);
         if (row_num == 0)
         {
-            DLOG("user info is not unique!");
+            DLOG("the name user info not exist!");
             return false;
         }
         MYSQL_ROW row = mysql_fetch_row(res);
@@ -130,7 +130,7 @@ public:
         int row_num = mysql_num_rows(res);
         if (row_num == 0)
         {
-            DLOG("user info is not unique!");
+            DLOG("the id user info not exist!");
             return false;
         }
         MYSQL_ROW row = mysql_fetch_row(res);

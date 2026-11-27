@@ -1,6 +1,7 @@
 #include "Logger.hpp"
 #include "Util.hpp"
 #include "db.hpp"
+#include "Online.hpp"
 
 #define HOST "127.0.0.1"
 #define USER "root"
@@ -74,12 +75,28 @@ void db_test()
     //     Json_Util::Serialize(user,body);
     //     DLOG("%s",body.c_str());
     // }
-        
+}
+
+void online_test()
+{
+    Online_manager om;
+    wsserver_t::connection_ptr conn;
+    uint64_t uid=2;
+    om.Enter_game_room(uid,conn);
+    if(om.Is_in_game_room(uid))
+        DLOG("is in room");
+    else
+        DLOG("not in room");
+    om.Exit_game_room(uid);
+    if(om.Is_in_game_room(uid))
+        DLOG("is in room");
+    else
+        DLOG("not in room");
 
 }
 
 int main()
 {
-    db_test();
+    online_test();
     return 0;
 }
